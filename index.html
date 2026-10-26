@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Прайс-лист</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-row">
+      <h1>Прайс-лист</h1>
+      <label class="search">
+        <span class="sr-only">Поиск по названию</span>
+        <input id="search" type="search" placeholder="Поиск по названию или артикулу" autocomplete="off">
+      </label>
+    </div>
+    <nav class="cats" id="cats" aria-label="Категории"></nav>
+    <nav class="subs" id="subs" aria-label="Подразделы"></nav>
+  </header>
+
+  <main>
+    <p class="status" id="status"></p>
+    <div id="catalog"></div>
+  </main>
+
+  <script src="js/catalog-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
