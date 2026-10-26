@@ -1,0 +1,232 @@
+:root {
+  --bg: #f4f1ea;
+  --card: #fff;
+  --ink: #1d1a16;
+  --muted: #6b645a;
+  --line: #e2d8c8;
+  --accent: #2f5d50;
+  --accent-soft: #e7f0ec;
+  --price: #9a4a16;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(244, 241, 234, 0.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+
+.top-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 8px;
+  flex-wrap: wrap;
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 650;
+}
+
+.search { flex: 1; min-width: 220px; max-width: 460px; }
+.search input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 16px;
+  background: #fff;
+}
+
+.cats, .subs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 20px 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.cats::-webkit-scrollbar,
+.subs::-webkit-scrollbar { display: none; }
+
+.cats button, .subs a {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cats button.active, .subs a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.subs a { color: var(--ink); }
+.subs:empty { display: none; }
+
+main { padding: 20px; max-width: 1200px; margin: 0 auto; }
+
+.status {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.section { margin-bottom: 32px; }
+.section h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  scroll-margin-top: 150px;
+}
+.section .note {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.photo {
+  height: 180px;
+  background: #eee8dd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo img {
+  max-width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+}
+.photo .empty {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.name { font-size: 15px; line-height: 1.35; }
+.meta { color: var(--muted); font-size: 13px; }
+.price {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--price);
+}
+.price.ask { color: var(--muted); font-weight: 600; font-size: 14px; }
+
+.hidden { display: none !important; }
+
+@media (max-width: 720px) {
+  .top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .top-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 12px 6px;
+  }
+  h1 { font-size: 20px; }
+  .search { max-width: none; min-width: 0; }
+  .cats, .subs {
+    padding: 6px 12px 10px;
+    gap: 8px;
+  }
+  .cats { padding-bottom: 8px; }
+  .subs { padding-top: 0; }
+  main {
+    padding: 12px 12px calc(20px + env(safe-area-inset-bottom));
+  }
+  .section { margin-bottom: 22px; }
+  .section h2 {
+    font-size: 18px;
+    scroll-margin-top: 190px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .card {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 0;
+  }
+  .photo {
+    width: 118px;
+    min-width: 118px;
+    height: auto;
+    min-height: 118px;
+    background: #eee8dd;
+  }
+  .photo img {
+    max-height: 118px;
+    width: 100%;
+    height: 118px;
+    object-fit: contain;
+  }
+  .body {
+    padding: 10px 12px;
+    gap: 4px;
+  }
+  .name { font-size: 14px; }
+  .meta { font-size: 12px; word-break: break-word; }
+  .price { font-size: 16px; padding-top: 4px; }
+}
+
+@media (max-width: 380px) {
+  .photo,
+  .photo img {
+    width: 96px;
+    min-width: 96px;
+    height: 96px;
+    max-height: 96px;
+  }
+}
